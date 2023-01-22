@@ -18,13 +18,18 @@ pipeline {
     success{
             emailext to: "divyarani0911@gmail.com",
             subject: "jenkins build:${currentBuild.currentResult}",
-            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nBuild Status: ${currentBuild.currentResult}
-                   ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            body: "Project Name: ${env.JOB_NAME}
+                   \nBuild: #${env.BUILD_NUMBER}
+                   \nBuild Status: ${currentBuild.currentResult}"
+                   
         }
     failure{
             emailext to: "divyarani0911@gmail.com",
             subject: "jenkins build:${currentBuild.currentResult}",
-            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nBuild Status: ${currentBuild.currentResult\nMore Info can be found here: ${env.BUILD_URL}"
+            body: "Project Name: ${env.JOB_NAME}
+                  \nBuild: #${env.BUILD_NUMBER}
+                  \nBuild Status: ${currentBuild.currentResult}
+                  \nMore Info can be found here: ${env.BUILD_URL}"
         }
     }
 }
