@@ -16,17 +16,19 @@ pipeline {
   }
   post{
     success{
-            emailext to: "divyarani0911@gmail.com, kavyasrinigowda@gmail.com,shravanbhat.sb@gmail.com",
+            emailext attachLog: true,
+            to: "divyarani0911@gmail.com, kavyasrinigowda@gmail.com,shravanbhat.sb@gmail.com",
             subject: "jenkins build:${currentBuild.currentResult}",
-            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nBuild Status: ${currentBuild.currentResult}\nNote:Kindly donot reply to this email as it is automated",
+            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nTriggered by: ${env.BUILD_USER_ID}\nBuild Status: ${currentBuild.currentResult}\nNote:Kindly donot reply to this email as it is automated",
             attachLog: true
                    
         }
     failure{
-            emailext to: "divyarani0911@gmail.com, kavyasrinigowda@gmail.com,shravanbhat.sb@gmail.com",
+            emailext attachLog: true,
+            to: "divyarani0911@gmail.com, kavyasrinigowda@gmail.com,shravanbhat.sb@gmail.com",
             subject: "jenkins build:${currentBuild.currentResult}",
-            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nBuild Status: ${currentBuild.currentResult}\nMore Info can be found here: ${env.BUILD_URL}\nNote:Kindly, donot reply to this email as it is automated"
-            attachLog: true
+            body: "Project Name: ${env.JOB_NAME}\nBuild: #${env.BUILD_NUMBER}\nTriggered by: ${env.BUILD_USER_ID}\nBuild Status: ${currentBuild.currentResult}\nMore Info can be found here: ${env.BUILD_URL}\nNote:Kindly, donot reply to this email as it is automated"
+          
         }
     }
 }
