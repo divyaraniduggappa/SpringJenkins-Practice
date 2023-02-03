@@ -1,13 +1,10 @@
 pipeline{
-    agent any
-    tools {
-      maven 'Maven-3.8.7'
-          }
+    agent { label "java" }
 
     stages{
         stage('Build'){
          steps{
-             sh script: 'mvn clean install'
+             sh 'mvn clean install'
             }
         }
 
